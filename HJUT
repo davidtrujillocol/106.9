@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Radio Player</title>
+  <style>
+    body {
+      background-color: #000;         /* Fondo negro */
+      display: flex;                  /* Centrar contenido */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;                  /* Ocupa toda la pantalla */
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .play-button {
+      padding: 40px 80px;             /* Aumenta el tamaño del botón */
+      font-size: 40px;                /* Texto más grande */
+      background-color: #ffcc00;      /* Color llamativo (amarillo) */
+      color: #000;
+      border: none;
+      border-radius: 20px;            /* Bordes redondeados */
+      cursor: pointer;
+      box-shadow: 0 0 25px #ffcc00;   /* Brillo alrededor del botón */
+      transition: all 0.3s ease;
+    }
+
+    .play-button:hover {
+      background-color: #ffaa00;      /* Color al pasar el cursor */
+      box-shadow: 0 0 40px #ffaa00;
+      transform: scale(1.05);         /* Efecto de aumento */
+    }
+  </style>
+</head>
+<body>
+  <audio id="radioPlayer" src="https://radiohd2.streaminghd.co:7098/stream" type="audio/mpeg"></audio>
+  <button class="play-button" id="playPauseBtn">▶︎ PLAY</button>
+
+  <script>
+    const audio = document.getElementById('radioPlayer');
+    const btn = document.getElementById('playPauseBtn');
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '❚❚ PAUSE';
+      } else {
+        audio.pause();
+        btn.textContent = '▶︎ PLAY';
+      }
+    });
+  </script>
+</body>
+</html>
